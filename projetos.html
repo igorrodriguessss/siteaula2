@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            background-color: black;
-            
-        }
-        /* Estilize a imagem do perfil */
-        .profile-image {
-            border-radius: 50%;
-            display: block;
-            margin: 0 auto;
-            
-        }
-        /* Estilize os quadros de informações */
-        .info-box {
-            
-            border: 1px solid #ccc;
-            padding: 20px;
-            margin: 10px;
-            background-color: #690000; /* Adicione uma cor de fundo para os quadros */
-            color: rgb(255, 255, 255);
-           
-            
-        }
-          
-    </style>
+    <title>Redirecionamento para o perfil do GitHub</title>
 </head>
 <body>
-    
-    <div class="info-box">
-        <h2>JA TAVA DIZENDO, CLICOU POR QUE?</h2>
-        
+    <div class="circle">
+        <div class="text">
+            <p>Redirecionando</p>
+        </div>
     </div>
+    <h1>Redirecionando para o Perfil do GitHub...</h1>
+
+    <script>
+        const username = 'igorrodriguessss'; // Substitua 'SEU_USUARIO' pelo seu nome de usuário do GitHub
+        const apiUrl = `https://api.github.com/users/${username}`;
+
+        fetch(apiUrl)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Erro ao acessar a API do GitHub');
+                }
+            })
+            .then(data => {
+                // Redireciona para o perfil do GitHub
+                const githubProfileUrl = data.html_url;
+                window.location.href = githubProfileUrl;
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao acessar o perfil do GitHub. Por favor, tente novamente mais tarde.');
+            });
+    </script>
 </body>
 </html>
