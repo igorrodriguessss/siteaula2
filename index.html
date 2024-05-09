@@ -23,7 +23,16 @@
             display: block; 
             margin: 0 auto;
             box-shadow: 0px 0px 120px rgba(121, 255, 121, 0.384);
+            position: relative;
+            animation: mymove 5s infinite;
+        
+
             
+        }
+        @keyframes mymove {
+            0% {top: 0px;}
+            50% {top: 75px;}
+            100% {top: 0px;}
         }
         /* Estilize os quadros de informações */
         .info-box {
@@ -85,6 +94,20 @@
         <h2>Projetos Realizados</h2>
         
     </div>
+    <script>
+        var elem = document.getElementById("profilePic"); 
+        var pos = 0;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (pos == 35) {
+                clearInterval(id);
+            } else {
+                pos++; 
+                elem.style.top = pos + "px"; 
+                elem.style.left = pos + "px"; 
+            }
+        }
+    </script>
     
 </body>
 </html>
